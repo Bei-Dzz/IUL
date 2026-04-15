@@ -1,0 +1,21 @@
+modules:
+  - name: sample_product_cf
+    class: examples.modules.sample_product_cf_module.SampleProductCFModule
+    enabled: true
+
+input:
+  source: excel
+  file_path: examples/data/sample_data.xlsx
+
+output:
+  destinations:
+    - format: csv
+      path: examples/output/results.csv
+    - format: json
+      path: examples/output/results.json
+
+cash_flow_projection:
+  projection_horizon_years: 100
+  time_step_per_year: 12  # 12 = monthly, 4 = quarterly, 2 = semi-annual, 1 = annual
+
+assumption_table_name: "202512 BE assumptions"
